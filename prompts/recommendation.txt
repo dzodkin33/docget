@@ -1,0 +1,43 @@
+Given this component and an identified issue, suggest suitable alternatives:
+
+**Component:**
+{component}
+
+**Issue:**
+{issue}
+
+Provide 2-3 alternative components that would resolve the issue. For each alternative:
+- Name and model
+- Why it's better / how it solves the issue
+- Key specifications that address the problem
+- Approximate price range (if known)
+- Where to purchase (e.g., "Available on DigiKey, Mouser")
+
+Return JSON:
+```json
+{{
+  "alternatives": [
+    {{
+      "name": "Alternative component name/model",
+      "manufacturer": "Manufacturer name",
+      "reason": "Detailed explanation of why this solves the issue",
+      "specs": {{
+        "relevant_spec_1": "value",
+        "relevant_spec_2": "value"
+      }},
+      "price_range": "$10-20",
+      "availability": "DigiKey, Mouser, Amazon"
+    }},
+    {{
+      "name": "Another alternative...",
+      "manufacturer": "...",
+      "reason": "...",
+      "specs": {{}},
+      "price_range": "$15-25",
+      "availability": "..."
+    }}
+  ]
+}}
+```
+
+Focus on commonly available, well-documented components suitable for DIY/maker projects.

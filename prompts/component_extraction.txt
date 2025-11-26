@@ -1,0 +1,72 @@
+You are analyzing technical specification documents for hardware components used in projects like drones, robots, or electronics prototypes.
+
+Extract ALL component specifications from the following text and tables. Focus on:
+
+**1. Component Identification:**
+- Name and model number
+- Manufacturer
+- Component type (motor, sensor, camera, processor, battery, ESC, etc.)
+
+**2. Power Specifications:**
+- Voltage (input/output ranges)
+- Current rating or consumption
+- Power consumption in Watts/milliwatts
+- Battery capacity (mAh) if applicable
+
+**3. Communication Interfaces:**
+- Count of UART, I2C, SPI, CAN, USB ports
+- Protocol support
+- Voltage levels (3.3V, 5V)
+
+**4. Component-Specific Specs:**
+- **Motors**: KV rating, max current, operating voltage, RPM
+- **Cameras**: Resolution, FPS, interface type, FOV
+- **Processors**: Clock speed, RAM, Flash, architecture
+- **Sensors**: Type (IMU, GPS, etc.), range, accuracy, update rate
+- **Batteries**: Voltage, capacity (mAh), cell count, chemistry
+- **ESCs**: Current rating, supported protocols
+- **Radio**: Frequency, channel count, range
+
+**Text:**
+{text}
+
+**Tables:**
+{tables}
+
+Return a JSON array of components in this format:
+```json
+[
+  {{
+    "name": "Component Name",
+    "type": "motor|sensor|camera|processor|battery|esc|radio|power|other",
+    "manufacturer": "Manufacturer name",
+    "part_number": "Part/model number",
+    "power": {{
+      "voltage_input": "5V",
+      "voltage_output": "3.3V",
+      "current_rating": "2A",
+      "power_consumption": "10W",
+      "capacity": "2200mAh"
+    }},
+    "interfaces": {{
+      "uart": 3,
+      "i2c": 2,
+      "spi": 1,
+      "can": 0,
+      "usb": 1,
+      "gpio": 20,
+      "pwm": 6
+    }},
+    "specs": {{
+      "key": "value",
+      "resolution": "1920x1080",
+      "kv_rating": "2300KV",
+      "clock_speed": "168MHz",
+      "weight": "50g"
+    }}
+  }}
+]
+```
+
+Be thorough - extract EVERY component mentioned. If multiple components are described, return multiple objects.
+If a value is not found, omit that field or use null.

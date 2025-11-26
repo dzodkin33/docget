@@ -1,0 +1,62 @@
+Analyze the power requirements for this hardware project:
+
+**Components:**
+{components}
+
+**Project Type:** {project_type}
+
+Perform a comprehensive power budget analysis:
+
+1. **Current Draw Calculation**
+   - Sum all component current requirements
+   - Identify peak vs average current draw
+   - Calculate safety margin (typically 20-30%)
+
+2. **Battery Recommendation**
+   - Voltage (number of cells: 1S, 2S, 3S, 4S, etc.)
+   - Minimum capacity (mAh) for desired runtime
+   - Chemistry recommendation (LiPo, Li-ion, etc.)
+   - C-rating requirements
+
+3. **Power Distribution**
+   - Voltage regulation needs
+   - Buck/boost converter requirements
+   - Power distribution board (PDB) recommendations
+
+4. **Runtime Estimates**
+   - Calculate runtime for different battery capacities
+   - Consider different load scenarios (idle, normal, peak)
+
+Return JSON:
+```json
+{{
+  "total_current": {{
+    "average_ma": 2500,
+    "peak_ma": 4000,
+    "with_margin_ma": 5000
+  }},
+  "battery_recommendation": {{
+    "voltage": "11.1V",
+    "cell_config": "3S",
+    "min_capacity_mah": 2200,
+    "recommended_capacity_mah": 5000,
+    "chemistry": "LiPo",
+    "c_rating": "20C"
+  }},
+  "voltage_requirements": {{
+    "5v_current_ma": 800,
+    "3.3v_current_ma": 500,
+    "needs_regulator": true
+  }},
+  "runtime_estimates": {{
+    "2200mah": "15-20 minutes",
+    "5000mah": "35-45 minutes"
+  }},
+  "warnings": [
+    "High current draw - ensure proper wire gauge",
+    "Consider thermal management for power regulators"
+  ]
+}}
+```
+
+Provide practical, safety-conscious recommendations.

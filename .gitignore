@@ -1,0 +1,5 @@
+.env*
+.docget_cache.json
+__pycache__/
+*.pyc
+data

@@ -1,0 +1,50 @@
+Analyze the following components for a hardware project (likely a drone or robot) and identify compatibility issues:
+
+**Components:**
+{components}
+
+Check for:
+
+1. **Power Compatibility**
+   - Do voltage levels match?
+   - Is total current draw reasonable for a single battery?
+   - Are there components with conflicting voltage requirements?
+   - Do any components exceed the power supply capabilities?
+
+2. **Interface Conflicts**
+   - Does the processor have enough UART/I2C/SPI ports for all peripherals?
+   - Are there duplicate device addresses on I2C?
+   - Protocol mismatches?
+   - Voltage level compatibility (3.3V vs 5V)?
+
+3. **Physical Constraints**
+   - Motor KV rating appropriate for voltage?
+   - ESC current rating sufficient for motors?
+   - Battery capacity adequate for power draw?
+   - Weight distribution concerns?
+
+4. **Missing Critical Components**
+   - Power regulation (if needed)?
+   - Level shifters (3.3V ↔ 5V)?
+   - Connectors and wiring?
+   - Essential sensors or controllers?
+
+Return JSON:
+```json
+{{
+  "issues": [
+    "Critical compatibility issue description",
+    "Another critical issue..."
+  ],
+  "warnings": [
+    "Potential concern or warning...",
+    "Another warning..."
+  ],
+  "recommendations": [
+    "Suggested fix or addition...",
+    "Another recommendation..."
+  ]
+}}
+```
+
+Focus on practical, actionable issues that would prevent the system from working correctly.
